@@ -6,7 +6,7 @@
 
     <groupId>dev-lib-dao</groupId>
     <artifactId>dev-lib-dao</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 
     <name>dao-service</name>
     <description>dao-service</description>
