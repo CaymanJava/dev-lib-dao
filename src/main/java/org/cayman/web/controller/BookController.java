@@ -47,17 +47,17 @@ public class BookController {
         return bookService.getById(id);
     }
 
-    @RequestMapping(value = "one/author", method = RequestMethod.GET)
+    @RequestMapping(value = "author", method = RequestMethod.GET)
     public @ResponseBody List<Book> getByAuthorId(@RequestParam(value = "id") int id) {
         return bookService.getByAuthorId(id);
     }
 
-    @RequestMapping(value = "one/category", method = RequestMethod.GET)
+    @RequestMapping(value = "category", method = RequestMethod.GET)
     public @ResponseBody List<Book> getByCategoryId(@RequestParam(value = "id") int id) {
         return bookService.getByCategoryId(id);
     }
 
-    @RequestMapping(value = "one/publisher", method = RequestMethod.GET)
+    @RequestMapping(value = "publisher", method = RequestMethod.GET)
     public @ResponseBody List<Book> getByPublisherId(@RequestParam(value = "id") int id) {
         return bookService.getByPublisherId(id);
     }
@@ -65,6 +65,12 @@ public class BookController {
     @RequestMapping(value = "some", method = RequestMethod.GET)
     public @ResponseBody List<Book> getLastNBooks(@RequestParam(value = "count") int count) {
         return bookService.getLastNBooks(count);
+    }
+
+    @RequestMapping(value = "some/category", method = RequestMethod.GET)
+    public @ResponseBody List<Book> getLastNBooksInCategory(@RequestParam(value = "count") int count,
+                                                            @RequestParam(value = "id") int categoryId) {
+        return bookService.getLastBooksInCategory(count, categoryId);
     }
 
     @RequestMapping(value = "save", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

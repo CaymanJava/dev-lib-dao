@@ -55,6 +55,6 @@ public class CategoryController {
             return false;
         }
         categoryService.delete(category);
-        return false;
+        return true;
     }
 }

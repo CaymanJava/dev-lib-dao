@@ -7,6 +7,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -17,7 +18,8 @@ public interface BookRepository extends JpaRepository<Book, Integer>, JpaSpecifi
     List<Book> findByPublisherIdOrderByAddDateDesc(int id);
     List<Book> findByNameContainingIgnoreCaseOrderByAddDateDesc(String name);
     List<Book> findByDescriptionContainingIgnoreCaseOrderByAddDateDesc(String name);
-
     @Query(value = "select b from Book b")
     List<Book> findWithPageable(Pageable pageable);
+//    @Query(value = "select b from Book b")
+    List<Book> findByCategoryId(int categoryId, Pageable pageable);
 }

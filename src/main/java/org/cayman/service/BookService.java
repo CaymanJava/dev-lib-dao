@@ -33,6 +33,11 @@ public class BookService {
         return bookRepository.findWithPageable(new PageRequest(0, count, Sort.Direction.DESC, "addDate"));
     }
 
+    public List<Book> getLastBooksInCategory(int count, int categoryId) {
+        log.info("Get last " + count + " added books from category (id = " + categoryId + ")");
+        return bookRepository.findByCategoryId(categoryId, new PageRequest(0, count, Sort.Direction.DESC, "addDate"));
+    }
+
     List<Book> getByCriteria(List<BookFilter> filters) {
         if (filters.size() == 0) {
             return getAll();

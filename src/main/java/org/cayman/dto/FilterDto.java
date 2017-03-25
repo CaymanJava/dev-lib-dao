@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FilterDto {
-    private String from;
-    private String to;
+    private int from;
+    private int to;
     private String lang;
-    private String categoryId;
+    private int categoryId;
 }

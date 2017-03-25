@@ -43,13 +43,13 @@ public class FilterServiceTest extends AbstractTest{
 
     @Test
     public void filter() throws Exception {
-        List<Book> ruFilter = filterService.filter(new FilterDto(EMPTY, EMPTY, "RU", null));
+        List<Book> ruFilter = filterService.filter(new FilterDto(0, 0, "RU", 0));
         assertTrue(ruFilter.size() > 0);
         ruFilter.forEach(b -> log.info(b.toString()));
         Category java = categoryService.getByName("Java");
-        List<Book> categoryFilter = filterService.filter(new FilterDto(EMPTY, "test", null, String.valueOf(java.getId())));
+        List<Book> categoryFilter = filterService.filter(new FilterDto(0, 0, "EN", java.getId()));
         assertTrue(categoryFilter.size() > 0);
-        List<Book> categoryAndYearFilter = filterService.filter(new FilterDto("2005", EMPTY, null, String.valueOf(java.getId())));
+        List<Book> categoryAndYearFilter = filterService.filter(new FilterDto(2005, 0, null, java.getId()));
         assertTrue(categoryAndYearFilter.size() > 0);
     }
 

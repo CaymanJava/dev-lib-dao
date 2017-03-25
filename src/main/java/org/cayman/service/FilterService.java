@@ -2,7 +2,6 @@ package org.cayman.service;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.cayman.dto.FilterDto;
 import org.cayman.filter.BookFilter;
 import org.cayman.filter.Operation;
@@ -12,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
-
-import static org.apache.commons.lang3.StringUtils.isNumeric;
 
 @Slf4j
 @Component
@@ -41,18 +38,18 @@ public class FilterService {
     public List<Book> filter(FilterDto filterDto) {
         Category category = extractCategory(filterDto);
         Language lang = extractLanguage(filterDto);
-        String from = filterDto.getFrom();
-        String to = filterDto.getTo();
+        int from = filterDto.getFrom();
+        int to = filterDto.getTo();
 
         log.info("Filter books. From = " + filterDto.getFrom() + "; to = " + filterDto.getTo() +
                 "; lang = " + filterDto.getLang() + "; category id = " + filterDto.getCategoryId());
 
         List<BookFilter> filters = new ArrayList<>();
-        if (from != null && !from.isEmpty() && isNumeric(from)) {
+        if (from != 0) {
             filters.add(new BookFilter(new SearchCriteria(YEAR, Operation.GT, from)));
         }
 
-        if (to != null && !to.isEmpty() && isNumeric(to)) {
+        if (to != 0) {
             filters.add(new BookFilter(new SearchCriteria(YEAR, Operation.LT, to)));
         }
 
@@ -89,9 +86,9 @@ public class FilterService {
     }
 
     private Category extractCategory(FilterDto filterDto) {
-        String categoryId = filterDto.getCategoryId();
-        if (categoryId != null && StringUtils.isNumeric(categoryId)) {
-            return categoryService.getById(Integer.parseInt(categoryId));
+        int categoryId = filterDto.getCategoryId();
+        if (categoryId != 0 ) {
+            return categoryService.getById(categoryId);
         }
         return null;
     }
