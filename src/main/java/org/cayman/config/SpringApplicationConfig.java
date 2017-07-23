@@ -15,10 +15,9 @@ import org.springframework.core.io.Resource;
 
 @SpringBootApplication
 @Import({DataSourceConfig.class})
-@ComponentScan(value={"org.cayman.repository.**", "org.cayman.service.**", "pro.devlib.web.**"})
+@ComponentScan(value={"org.cayman.repository.**", "org.cayman.service.**", "org.cayman.web.**"})
 @Slf4j
 public class SpringApplicationConfig {
-
 
     public static void main(String[] args) throws Exception{
         SpringApplication.run(SpringApplicationConfig.class, args);
@@ -43,4 +42,5 @@ public class SpringApplicationConfig {
         propertySourcesPlaceholderConfigurer.setIgnoreResourceNotFound(false);
         return propertySourcesPlaceholderConfigurer;
     }
+
 }

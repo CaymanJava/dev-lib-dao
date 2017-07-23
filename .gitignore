@@ -3,7 +3,7 @@ temp
 target/**
 work
 logs/*
-.idea
 log/*
 debug
 gc.log
+/.idea/**
