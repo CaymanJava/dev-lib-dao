@@ -52,10 +52,3 @@ curl -i -X POST -H 'Content-Type: application/json' -d '{"keyword":"java"}' http
 
 POST request to add new vote:
 curl -i -X POST -H 'Content-Type: application/json' -d '{"userId":"1", "bookId":"29", "ratingId":"29", "value":"5"}' http://localhost:5674/rating/save
-
-
-  private int userId;
-    private int bookId;
-    private int ratingId;
-    private int value;
-}

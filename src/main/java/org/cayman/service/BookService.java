@@ -28,6 +28,11 @@ public class BookService {
         return bookRepository.findAllByOrderByAddDateDesc();
     }
 
+    public long getCount() {
+        log.info("Get books count.");
+        return bookRepository.count();
+    }
+
     public List<Book> getLastNBooks(int count) {
         log.info("Get last " + count + " added books");
         return bookRepository.findWithPageable(new PageRequest(0, count, Sort.Direction.DESC, "addDate"));
