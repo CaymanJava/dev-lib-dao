@@ -36,6 +36,11 @@ public class BookController {
         return bookService.getAll();
     }
 
+    @RequestMapping(method = RequestMethod.GET)
+    public @ResponseBody long getBookCount() {
+        return bookService.getCount();
+    }
+
     @RequestMapping(value = "one", method = RequestMethod.GET)
     public @ResponseBody Book getBookById(@RequestParam(value = "id") int id) {
         bookService.incrementBookViews(id);
